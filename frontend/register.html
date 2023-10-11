@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="https://serve-mui.netlify.app/css/mui.css">
+    <script src="https://serve-mui.netlify.app/script/mui.js"></script>
+    <title>Sticky Notes - ユーザー登録</title>
+</head>
+<body>
+    <div class="container">
+        <h1 class="banner">Sticky Notes</h1>
+        <div class="login-form">
+            <h3 class="login-title">ユーザー登録</h3>
+            <div class="alert-msg"></div>
+            <form class="form">
+                <div class="form-control">
+                    <input type="text" id="name" name="name" placeholder="氏名" />
+                </div>
+                <div class="form-control">
+                    <input type="text" id="email" name="email" placeholder="メールアドレス" />
+                </div>
+                <div class="form-control">
+                    <input type="password" id="password" name="password" placeholder="パスワード" />
+                </div>
+                <div class="flex buttons">
+                <a class="btn btn-secondary" id="registerBtn">登録</a>
+                <a href="/login" class="btn btn-secondary">キャンセル</a>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="/static/script/register.js"></script>
+    <script>
+        document.getElementById('registerBtn').addEventListener('click', () => {
+            document.querySelector('.alert-msg').innerHTML = '';
+            Register(document.getElementById('name').value, document.getElementById('email').value, document.getElementById('password').value)
+                .then(() => {
+                    window.location = '/login';
+                })
+                .catch(err => {
+                    document.querySelector('.alert-msg').innerHTML = err;
+                });
+        });
+    </script>
+</body>
+</html>

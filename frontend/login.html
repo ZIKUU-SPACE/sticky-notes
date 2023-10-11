@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="https://serve-mui.netlify.app/css/mui.css">
+    <script src="https://serve-mui.netlify.app/script/mui.js"></script>
+    <title>Sticky Notes - ログイン</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="banner">Sticky Notes</h1>
+        <div class="login-form">
+            <h3 class="login-title">ログイン</h3>
+            <div class="alert-msg"></div>
+            <form class="form">
+                <div class="form-control">
+                    <input type="text" id="email" name="email" placeholder="メールアドレス" />
+                </div>
+                <div class="form-control">
+                    <input type="password" id="password" name="password" placeholder="パスワード" />
+                </div>
+                <div class="my-2">
+                    <p>アカウントを持っていない場合は <a href="/register" class="underline">アカウント登録</a> してください。</p>
+                </div>
+                <div class="flex buttons">
+                    <a id="loginBtn" class="btn btn-secondary">ログイン</a>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="/static/script/login.js"></script>
+    <script src="/static/script/getuser.js"></script>
+    <script>
+        document.getElementById('loginBtn').addEventListener('click', () => {
+            document.querySelector('.alert-msg').innerHTML = '';
+            Login(document.getElementById('email').value, document.getElementById('password').value)
+                .then(result => {
+                    if (result.result === 'OK') {
+                        localStorage.setItem('token', result.token);
+                        GetUser()
+                            .then((user) => {
+                                localStorage.setItem('user', JSON.stringify(user));
+                                localStorage.setItem('admin', user.roles.includes('admin'));
+                                window.location = '/';
+                            })
+                            .catch(e => {throw e});
+                    } else {
+                        document.querySelector('.alert-msg').innerHTML = result.msg;
+                    }
+                })
+                .catch(err => { console.log(err) });
+        });
+    </script>
+</body>
+
+</html>

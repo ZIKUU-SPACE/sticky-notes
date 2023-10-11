@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://serve-mui.netlify.app/css/mui.css">
+    <script src="https://serve-mui.netlify.app/script/mui.js"></script>
+    <title>Sticky Notes</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+
+<body>
+    <x-sidebar></x-sidebar>
+
+    <div class="with-sidebar">
+        <div class="main-container">
+            <div class="container1">
+                <button class="btn icon-btn" style="background-color: transparent" id="create-button"><i
+                        class="fas fa-plus"></i></button>
+                <span class="app-title">Sticky Notes</span>
+                <div class="user"><i class="fas fa-user"></i>&nbsp;<div id="username"></div>
+                </div>
+            </div>
+            <div class="container2"></div>
+            <div class="container3">
+                <form>
+                    <textarea name="note-text" id="note-text" placeholder="ノートを記入..." maxlength="200"></textarea>
+                    <!--                     <svg id="share-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-share" viewBox="0 0 16 16">
+                        <path
+                            d="M13.5 1a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.499 2.499 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5zm-8.5 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm11 5.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z" />
+                    </svg>
+ -->
+                    <svg id="mic-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-mic"
+                        viewBox="0 0 16 16">
+                        <path fill-rule="evenodd"
+                            d="M3.5 6.5A.5.5 0 0 1 4 7v1a4 4 0 0 0 8 0V7a.5.5 0 0 1 1 0v1a5 5 0 0 1-4.5 4.975V15h3a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1h3v-2.025A5 5 0 0 1 3 8V7a.5.5 0 0 1 .5-.5z" />
+                        <path fill-rule="evenodd"
+                            d="M10 8V3a2 2 0 1 0-4 0v5a2 2 0 1 0 4 0zM8 0a3 3 0 0 0-3 3v5a3 3 0 0 0 6 0V3a3 3 0 0 0-3-3z" />
+                    </svg>
+                    <svg id="check-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-check-circle" viewBox="0 0 16 16">
+                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                        <path
+                            d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z" />
+                    </svg>
+                    <svg id="x-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-x-circle" viewBox="0 0 16 16">
+                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                        <path
+                            d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
+                    </svg>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <x-notification></x-notification>
+    <x-snackbar></x-snackbar>
+    <x-overlay></x-overlay>
+    <x-aside width='300px'>
+        <div id="aside-title">ノート編集</div>
+        <div id="aside-content"></div>
+        <div id="aside-buttons">
+            <button id="ok" class="btn aside-ok">保存</button>
+            <button id="alternate" class="btn aside-alternate">削除</button>
+        </div>
+    </x-aside>
+
+    <script src="/static/script/notes.js"></script>
+    <script src="/static/script/getusers.js"></script>
+    <script src="/static/script/index.js"></script>
+
+</body>
+
+</html>
