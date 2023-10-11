@@ -3,7 +3,7 @@
 Sticky-NotesはMongoDBをストレージに使った簡単なノートアプリです。
 UI部分は[自作のMicro UIフレームワーク](https://serve-mui.netlify.app)を使っています。このフレームワークはJavaScript UIコンポーネントの習作です。
 
-## 動かす　.envファイルとdbディレクトリを作成する
+## 動かす準備　.envファイルとdbディレクトリを作成する
 
 .envの内容なこんな感じ。
 
@@ -20,7 +20,7 @@ dbディレクトリはMongoDBのデータをホストOS側に永続化するた
 
 
 
-## Docker compose
+## 動かす　Docker compose
 
 プロジェクトディレクトリで以下のコマンドを実行するとMongoDBとSticky-Notesのコンテナが起動してデプロイが完了する。
 
